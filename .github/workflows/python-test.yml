@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+env:
+  PROJECT_ID: "qnacom-service"
 
 jobs:
   test-action:
@@ -13,6 +15,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    # https://stackoverflow.com/questions/79173485/github-actions-cannot-upload-file-to-google-cloud-storage
+    - name: Authenticate with GCP using Service Account
+      uses: 'google-github-actions/auth@v2'
+      with:
+        project_id: ${{ env.GCP_PROJECT_ID }}
+        credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+  
+    - name: Set up Cloud SDK
+      uses: 'google-github-actions/setup-gcloud@v2.0.0'
+  
+    - name: Use gcloud CLI
+      run: 'gcloud info'
+        
     - name: Run My Python Action
       uses: ./
       with:
