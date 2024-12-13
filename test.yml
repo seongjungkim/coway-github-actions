@@ -1,0 +1,19 @@
+name: "Test My Python Action"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run My Python Action
+      uses: ./coway-github-actions
+      with:
+        name: "GitHub User"
