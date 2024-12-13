@@ -1,0 +1,14 @@
+name: "Check fulfillment URL & Datastore ID using Python in Coway"
+description: "A sample GitHub Action written in Python"
+author: "SeongJung Kim"
+inputs:
+  name:
+    description: "The name to greet"
+    required: true
+    default: "World"
+outputs:
+  greeting:
+    description: "The greeting message"
+runs:
+  using: "docker"
+  image: "Dockerfile"
