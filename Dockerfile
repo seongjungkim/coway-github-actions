@@ -5,6 +5,7 @@ WORKDIR /app
 
 # Copy the application code
 COPY src/main.py /app/main.py
+COPY src/dialogflow_agent.py /app/dialogflow_agent.py
 COPY src/requirements.txt /app/requirements.txt
 
 # Install dependencies
